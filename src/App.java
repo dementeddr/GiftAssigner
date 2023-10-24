@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class App {
 
-    public static String[][] people = {{"Rex", "Allena"}, {"Taylor", "Casey"}, {"Bo", "Sonja"}, {"Grandma"}};
+    public static String[][] people = {{"Alice", "Bob"}, {"Carol", "Dave"}, {"Eve", "Faythe"}, {"Grandma"}};
     public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful", "Something made of wood"};
     public static boolean mirrorSpouses = true;
 
