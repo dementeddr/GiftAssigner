@@ -6,8 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class App {
 
-    public static String[][] people = {{"Alice", "Bob"}, {"Carol", "Dave"}, {"Eve", "Faythe"}};
-    public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful"};
+    public static String[][] people = {{"Rex", "Allena"}, {"Taylor", "Casey"}, {"Bo", "Sonja"}, {"Grandma"}};
+    public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful", "Something made of wood"};
     public static boolean mirrorSpouses = true;
 
     public static void main(String[] args) throws Exception {
@@ -92,13 +92,15 @@ public class App {
         return arrangement;
     }
  
-
+    
     public static List<String> arrangeUnmirrored(String[][] people) {
         var arrangement = new ArrayList<String>();
 
-        for (String[] pair : people) {
-            arrangement.add(pair[0]);
-            arrangement.add(pair[1]);
+        for (String[] group : people) {
+        
+            for (String person : group) {
+                arrangement.add(person);
+            }
         }
 
         shuffle(arrangement);
