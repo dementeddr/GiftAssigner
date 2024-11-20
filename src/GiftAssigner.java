@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class App {
+public class GiftAssigner {
 
     public static String[][] people = {{"Alice", "Bob"}, {"Carol", "Dave"}, {"Eve", "Faythe"}, {"Grandma"}};
     public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful", "Something made of wood"};
