@@ -27,3 +27,6 @@ replay_pid*
 /.vscode
 /bin
 /lib
+
+# vim-specific
+*.swp

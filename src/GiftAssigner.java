@@ -8,7 +8,7 @@ public class GiftAssigner {
 
     public static String[][] people = {{"Alice", "Bob"}, {"Carol", "Dave"}, {"Eve", "Faythe"}, {"Grandma"}};
     public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful", "Something made of wood"};
-    public static boolean mirrorSpouses = true;
+    public static boolean mirrorPartners = true;
 
     public static void main(String[] args) throws Exception {
         System.out.println("Starting assignment");
@@ -16,7 +16,7 @@ public class GiftAssigner {
         // Get arrangement of people
         List<String> arrangement;
 
-        if (countPeople(people) % 2 != 0 || !mirrorSpouses) {
+        if (countPeople(people) % 2 != 0 || !mirrorPartners) {
             System.out.println("Unmirrored Arrangement");
 
             arrangement = arrangeUnmirrored(people);
@@ -27,26 +27,26 @@ public class GiftAssigner {
         }
 
         // Organize categories
-        var catDirections = new ArrayList<String>(Arrays.asList(categories));
+        var categoryDirs = new ArrayList<String>(Arrays.asList(categories));
 
-        for (int i = catDirections.size(); i < arrangement.size() - 1; i++) {
-            catDirections.add("");
+        for (int i = categoryDirs.size(); i < arrangement.size() - 1; i++) {
+            categoryDirs.add("");
         }
         
-        shuffle(catDirections);
+        shuffle(categoryDirs);
 
-        if (mirrorSpouses && catDirections.size() % 2 == 1 && catDirections.contains("")) {
+        if (mirrorPartners && categoryDirs.size() % 2 == 1 && categoryDirs.contains("")) {
             int index = 0;
 
-            for (; index < catDirections.size(); index++) {
-                if (catDirections.get(index) == "")
+            for (; index < categoryDirs.size(); index++) {
+                if (categoryDirs.get(index) == "")
                     break;
             }
 
-            int mid = catDirections.size()/2;
-            String swap = catDirections.get(mid);
-            catDirections.set(mid, catDirections.get(index));
-            catDirections.set(index, swap);
+            int mid = categoryDirs.size()/2;
+            String swap = categoryDirs.get(mid);
+            categoryDirs.set(mid, categoryDirs.get(index));
+            categoryDirs.set(index, swap);
         } 
 
         // Assign categories and output
@@ -56,9 +56,9 @@ public class GiftAssigner {
 
             System.out.printf("%d. %s:\n", i, arrangement.get(i));
 
-            for (int j = 0; j < catDirections.size(); j++) {
+            for (int j = 0; j < categoryDirs.size(); j++) {
 
-                String category = catDirections.get(j);
+                String category = categoryDirs.get(j);
 
                 if (category == "")
                     continue;
