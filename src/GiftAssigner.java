@@ -2,16 +2,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class GiftAssigner {
 
     public static String[][] people = {{"Alice", "Bob"}, {"Carol", "Dave"}, {"Eve", "Faythe"}, {"Grandma"}};
     public static String[] categories = {"Something Consumable", "Something Handmade", "Something Useful", "Something made of wood"};
     public static boolean mirrorPartners = true;
+    public static Random rnd;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Starting assignment");
+        long seed = System.currentTimeMillis();
+        System.out.printf("Starting assignment with seed %d\n", seed);
+        rnd = new Random(seed);
 
         // Get arrangement of people
         List<String> arrangement;
@@ -76,7 +78,6 @@ public class GiftAssigner {
         int pairCount = countPeople(people) / 2;
         var arrangement = Arrays.asList(new String[pairCount * 2]);
         var peopleList = Arrays.asList(people);
-        Random rnd = ThreadLocalRandom.current();
 
         shuffle(peopleList);
 
@@ -110,7 +111,6 @@ public class GiftAssigner {
 
 
     public static int countPeople(String[][] people) {
-
         int totalPeople = 0;
 
         for (int i = 0; i < people.length; i++) {
@@ -122,9 +122,6 @@ public class GiftAssigner {
 
 
     public static <T> void shuffle(List<T> list) {
-
-        Random rnd = ThreadLocalRandom.current();
-
         for (int i = list.size() - 1; i > 0; i--) {
             int j = rnd.nextInt(i + 1);
             T swap = list.get(j);
